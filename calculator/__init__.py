@@ -4,6 +4,7 @@ import logging
 import logging.config
 from dotenv import load_dotenv
 from calculator.commands import CommandHandler
+from calculator.plugins.history import HistoryManager 
 from calculator.plugins import PluginManager
 
 class CalculatorApp:
@@ -18,6 +19,9 @@ class CalculatorApp:
         # Initialize the command handler and plugin manager
         self.command_handler = CommandHandler()
         self.plugin_manager = PluginManager(self.command_handler)
+
+        # Initialize HistoryManager here in the CalculatorApp
+        self.history_manager = HistoryManager()
 
     def configure_logging(self):
         """
@@ -47,10 +51,7 @@ class CalculatorApp:
         return self.settings.get(env_var, None)
 
     def start(self):
-        """
-        Load plugins and start the REPL for command input.
-        """
-
+        # Load and register plugins
         self.plugin_manager.load_plugins()
 
         logging.info("Application started. Type 'exit' to exit or 'menu' to display available commands.")
@@ -58,7 +59,7 @@ class CalculatorApp:
         try:
             while True:
                 # Step 1: Choose an operation
-                command_name = input("Choose a command or 'menu' to see available commands (or 'exit' to quit): ").strip().lower()
+                command_name = input("Choose a command or 'exit' to quit: ").strip().lower()
 
                 if command_name == 'exit':
                     logging.info("Exiting application.")
@@ -68,9 +69,10 @@ class CalculatorApp:
                     logging.error(f"Unknown command: '{command_name}'")
                     continue
 
-                if command_name == 'menu':
-                    # Execute the menu command to display available commands
-                    self.command_handler.execute_command('menu')
+                # For commands that do not require operands
+                if command_name in ['menu', 'showhistory', 'clearhistory']:
+                    # Directly execute the command without asking for operands
+                    self.command_handler.execute_command(command_name)
                     continue
 
                 try:
@@ -82,6 +84,10 @@ class CalculatorApp:
                     
                     # Step 4: Execute the command
                     result = self.command_handler.execute_command(command_name, first_number, second_number)
+
+                    # Save the result to history using HistoryManager directly
+                    self.history_manager.save_to_history(command_name, first_number, second_number, result)
+
                     print(f"Result: {result}")
                     
                 except ValueError:
