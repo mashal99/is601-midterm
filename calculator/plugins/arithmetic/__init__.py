@@ -1,25 +1,27 @@
-class AddCommand:
+from calculator.commands import Command
+
+class AddCommand(Command):
     def execute(self, a, b):
         try:
             return a + b
         except TypeError:
             raise ValueError("Invalid input: both values must be numbers.")
 
-class SubtractCommand:
+class SubtractCommand(Command):
     def execute(self, a, b):
         try:
             return a - b
         except TypeError:
             raise ValueError("Invalid input: both values must be numbers.")
 
-class MultiplyCommand:
+class MultiplyCommand(Command):
     def execute(self, a, b):
         try:
             return a * b
         except TypeError:
             raise ValueError("Invalid input: both values must be numbers.")
 
-class DivideCommand:
+class DivideCommand(Command):
     def execute(self, a, b):
         try:
             if b == 0:
@@ -27,12 +29,3 @@ class DivideCommand:
             return a / b
         except TypeError:
             raise ValueError("Invalid input: both values must be numbers.")
-
-# A function to load the available commands
-def get_arithmetic_commands():
-    return {
-        'add': AddCommand(),
-        'subtract': SubtractCommand(),
-        'multiply': MultiplyCommand(),
-        'divide': DivideCommand(),
-    }
