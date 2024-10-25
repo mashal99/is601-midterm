@@ -54,12 +54,12 @@ class CalculatorApp:
         # Load and register plugins
         self.plugin_manager.load_plugins()
 
-        logging.info("Application started. Type 'exit' to exit or 'menu' to display available commands.")
+        logging.info("Application started.")
         
         try:
             while True:
                 # Step 1: Choose an operation
-                command_name = input("Choose a command or 'exit' to quit: ").strip().lower()
+                command_name = input("Choose 'exit' to exit or 'menu' for options: ").strip().lower()
 
                 if command_name == 'exit':
                     logging.info("Exiting application.")
