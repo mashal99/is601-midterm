@@ -1,5 +1,23 @@
 # Advanced Python Calculator
 
+## Table of Contents
+- [Project Overview](#project-overview)
+- [Features](#features)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+- [Design Patterns](#design-patterns)
+- [Environment Variables](#environment-variables)
+- [Logging](#logging)
+- [Exception Handling](#exception-handling)
+- [Testing](#testing)
+  - [Key Test Files](#key-test-files)
+- [Video Demonstration](#video-demonstration)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## Project Overview
 
 This Advanced Python Calculator is a command-line application designed for modularity, extensibility, and professional code standards. It provides basic arithmetic operations with history tracking, menu-driven navigation, and a plugin-based architecture. The project includes automated testing, environment variable management, and comprehensive logging.
@@ -160,16 +178,6 @@ pytest --pylint --cov
 A video demonstration of the calculator application, showing its key features and functionalities, is available here:
 
 - **[Video Demonstration Link](https://youtu.be/_SgwREqofa8)**
-
-## Contributing
-
-Contributions are welcome! Follow these steps:
-
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature/YourFeature`).
-3. Make changes and commit (`git commit -am 'Add new feature'`).
-4. Push to the branch (`git push origin feature/YourFeature`).
-5. Create a pull request.
 
 ## License
 
