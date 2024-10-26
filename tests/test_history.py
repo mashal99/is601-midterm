@@ -47,3 +47,28 @@ def test_clear_history(history_manager):
     history_manager.clear_history()
     history = history_manager.load_history()
     assert history.empty
+
+def test_load_history_with_no_data(history_manager):
+    """Test loading history when the history file is empty."""
+    history_manager.clear_history()  # Ensure history is empty
+    history = history_manager.load_history()
+    assert history.empty  # Should be an empty DataFrame
+
+def test_save_to_history_multiple_entries(history_manager):
+    """Test saving multiple entries to history and loading them."""
+    history_manager.save_to_history("add", 1, 2, 3)
+    history_manager.save_to_history("subtract", 5, 3, 2)
+    history = history_manager.load_history()
+    assert len(history) == 2
+    assert history.iloc[0].to_dict() == {
+        'Operation': 'add',
+        'Operand1': 1,
+        'Operand2': 2,
+        'Result': 3
+    }
+    assert history.iloc[1].to_dict() == {
+        'Operation': 'subtract',
+        'Operand1': 5,
+        'Operand2': 3,
+        'Result': 2
+    }
