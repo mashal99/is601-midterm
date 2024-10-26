@@ -137,7 +137,7 @@ This project uses two primary exception-handling philosophies:
 
 2. **Easier to Ask for Forgiveness than Permission (EAFP)**:
    - Example: In the `start()` method, `try-except` blocks handle potential errors during runtime, including `ValueError` for invalid inputs and `ZeroDivisionError` for division operations.
-   - **[Link to EAFP Implementation](calculator/__init__.py#L65)**
+   - **[Link to EAFP Implementation](calculator/__init__.py#L78)**
 
 ## Testing
 
