@@ -5,7 +5,6 @@ This module tests core features of CalculatorApp, including starting the app
 and loading environment variables.
 """
 
-
 from calculator import CalculatorApp
 
 def test_calculator_start(monkeypatch):
