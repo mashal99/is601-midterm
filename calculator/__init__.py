@@ -28,6 +28,7 @@ class CalculatorApp:
         Configure logging based on the logging.conf file. If the file is missing, configure basic logging.
         """
         logging_conf_path = 'logging.conf'
+        # Look Before You Leap (LBYL)
         if os.path.exists(logging_conf_path):
             logging.config.fileConfig(logging_conf_path, disable_existing_loggers=False)
         else:
@@ -74,7 +75,7 @@ class CalculatorApp:
                     # Directly execute the command without asking for operands
                     self.command_handler.execute_command(command_name)
                     continue
-
+                # Easier to Ask for Forgiveness than Permission (EAFP)    
                 try:
                     # Step 2: Enter the first number
                     first_number = float(input("Enter the first number: ").strip())
