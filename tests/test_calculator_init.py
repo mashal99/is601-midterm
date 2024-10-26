@@ -1,7 +1,6 @@
 """
 Unit tests for functionality in calculator/__init__.py.
 """
-
 import os
 import logging  # Standard library imports
 from unittest import mock

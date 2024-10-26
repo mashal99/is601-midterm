@@ -4,7 +4,6 @@ Unit tests for the CalculatorApp functionality in the calculator application.
 This module tests core features of CalculatorApp, including starting the app
 and loading environment variables.
 """
-
 from calculator import CalculatorApp
 
 def test_calculator_start(monkeypatch):
