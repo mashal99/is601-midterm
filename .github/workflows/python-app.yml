@@ -27,6 +27,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install --use-feature=fast-deps -r requirements.txt
+          pip install pytest pytest-cov pytest-pylint  # Install testing tools
 
       - name: Run tests with coverage and linting
         run: |
